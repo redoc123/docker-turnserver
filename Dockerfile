@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.9.18
-MAINTAINER Brian Prodoehl <bprodoehl@connectify.me>
+MAINTAINER Bhanu Nemani <bhanu@hopperbee.com>
 
 # Set correct environment variables.
 ENV HOME /root
@@ -12,10 +12,10 @@ RUN apt-get install -y gdebi-core
 
 ENV COTURN_VER 4.5.0.4
 RUN cd /tmp/ && curl -sL http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}.tar.gz | tar -xzv
-#RUN cd /tmp/ && curl -sL http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz | tar -xzv
 
 RUN groupadd turnserver
 RUN useradd -g turnserver turnserver
+RUN dpkg-buildpackage
 RUN gdebi -n /tmp/coturn*.deb
 
 RUN mkdir /etc/service/turnserver
