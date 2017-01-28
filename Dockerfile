@@ -11,7 +11,7 @@ RUN apt-get update && apt-get dist-upgrade -y
 RUN apt-get install -y gdebi-core
 
 ENV COTURN_VER 4.4.5.1
-http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz
+RUN cd /tmp/ && curl -sL http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz | tar -xzv
 
 #This is latest get it working
 #RUN cd /tmp/ && curl -sL http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}.tar.gz | tar -xzv
