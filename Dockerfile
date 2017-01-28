@@ -19,7 +19,6 @@ http://turnserver.open-sys.org/downloads/v${COTURN_VER}/turnserver-${COTURN_VER}
 RUN groupadd turnserver
 RUN useradd -g turnserver turnserver
 RUN echo $PATH
-RUN dpkg-buildpackage
 RUN gdebi -n /tmp/coturn*.deb
 
 RUN mkdir /etc/service/turnserver
